@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panucci's Pizza</title>
+    <div data-th-replace="~{fragments/bootstrap.html :: css}"></div>
+</head>
+
+<body>
+    <div data-th-replace="~{fragments/bootstrap.html :: js}"></div>
+    <div class="container">
+        <h2>Order Delivery Details</h2>
+        <form method="post" data-th-object="${order}" data-th-action="@{/pizza/order}">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" data-th-field="*{name}" data-th-value="*{name}" placeholder="Placeholder" /></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td> <input type="text" data-th-field="*{address}" data-th-value="*{address}" placeholder="Placeholder" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td> <input type="text" data-th-field="*{phone}" data-th-value="*{phone}" placeholder="Placeholder" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rush:</td>
+                    <td> <input type="checkbox" data-th-field="*{rush}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Comments:</td>
+                    <td> <textarea data-th-field="*{comments}" data-th-value="*{comments}" placeholder="Type here"></textarea>
+
+                    </td>
+                </tr>
+            </table>
+            <a href="../" class="btn btn-light">Cancel Order</a>
+            <input type="submit" value="Place Order" class="btn btn-light" />
+        </form>
+    </div>
+</body>
+
+</html>

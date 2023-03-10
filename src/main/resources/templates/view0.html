@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panucci's Pizza</title>
+    <div data-th-replace="~{fragments/bootstrap.html :: css}"></div>
+    <style>
+        .error {
+            color: red;
+        };
+    </style>
+</head>
+
+<body>
+    <div data-th-replace="~{fragments/bootstrap.html :: js}"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <img src="#" height="300px" />
+            </div>
+            <div class="col-9">
+                <h1>Panucci's Pizza</h1>
+            </div>
+        </div>
+        <div class="row">
+            <h2>Select a pizza</h2>
+            <form method="post" data-th-action="@{/pizza}" data-th-object="${pizza}">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="row">
+                            <img src="#" />
+                        </div>
+                        <input type="radio" data-th-field="*{pizza}" value="bella" data-th-text="@{Bella}">
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row">
+                            <img src="#" />
+                        </div>
+                        <input type="radio" data-th-field="*{pizza}" value="margherita" data-th-text="@{Margherita}">
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row">
+                            <img src="#" />
+                        </div>
+                        <input type="radio" data-th-field="*{pizza}" value="marinara" data-th-text="@{Marinara}">
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row">
+                            <img src="#" />
+                        </div>
+                        <input type="radio" data-th-field="*{pizza}" value="spianatacalabrese" data-th-text="@{Spianata Calabrese}">
+                    </div>
+
+                    <div class="col-2">
+                        <div class="row">
+                            <img src="#" />
+                        </div>
+                        <input type="radio" data-th-field="*{pizza}" value="trioformaggio" data-th-text="@{Trio Formaggio}">
+                    </div>
+                </div>
+                <div class="row" data-th-if="${#fields.hasErrors('pizza')}">
+                    <p data-th-errors="*{pizza}" data-th-errorclass="error"></p>
+                </div>
+                <div class="row mt-3">
+                    <span class="col-2">Size:</span>
+                    <select data-th-field="*{size}" data-th-value="*{size}" style="display:inline" class="col-2">
+                        <option value="sm" data-th-text="@{Small}"></option>
+                        <option value="md" data-th-text="@{Medium}"></option>
+                        <option value="lg" data-th-text="@{Large}"></option>
+                    </select>
+                    <div data-th-if="${#fields.hasErrors('size')}">
+                        <p data-th-errors="*{size}" data-th-errorclass="error"></p>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <span class="col-2">Quantity:</span>
+                    <input type="text" data-th-field="*{quantity}" data-th-value="*{quantity}" class="col-2"/>
+                    <div data-th-if="${#fields.hasErrors('quantity')}">
+                        <p data-th-errors="*{quantity}" data-th-errorclass="error"></p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-2"> </div>
+                    <input type="submit" value="Next" class="col-1" />    
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
